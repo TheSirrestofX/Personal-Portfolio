@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+  
+</head> 
+<body>
+    <div>
+        <table class="table" style="border: 3px solid black" >
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Section</th>
+                    <th>Course</th>
+                    <th>Action</th> 
+                </tr>
+            </thead>
+            <tbody style="border: 3x solid black">
+              <tr>
+                <th><input type="text" placeholder="Name" aria-label="name" id="name"></th>
+                <th><input type="text" placeholder="Section" aria-label="section" id="section"></th>
+                <th><input type="text" placeholder="Course" aria-label="course" id="course"></th>
+                <th><button type="button" class="btn btn-primary" id="saveBtn">Save Record</button></th>
+              </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <script>
+        document.getElementById('saveBtn').addEventListener('click', function () {
+            var name = document.getElementById('name').value;
+            var section = document.getElementById('section').value;
+            var course = document.getElementById('course').value;
+
+            var newUserTable = document.createElement('div');
+            newUserTable.className = 'table';
+            newUserTable.innerHTML = '<table class="table" style="border:1px solid black">' + '<tr>' +
+                 '<th>'+ name + '</th>' +
+                 '<th>'+ section + '</th>' +
+                 '<th>'+ course + '</th>' +
+                 '<th><button type="button" class="btn btn-danger" onclick="deleteRow(this)">Delete</button></th>' +
+                 '</tr>' +   
+                '</table>';
+
+            document.body.appendChild(newUserTable);
+        });
+
+        function deleteRow(btn) {
+            var row = btn.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+    </script> 
+</body>
+</html>
